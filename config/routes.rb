@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   get 'bookcases/new', to: 'bookcases#new', as: :new_bookcase
   post 'bookcases', to: 'bookcases#create', as: :bookcases
   delete 'bookcases/:id', to: 'bookcases#destroy', as: :bookcase
+
+  get 'books/new', to: 'books#new', as: :new_book
   # resources :bookcases
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
