@@ -1,1 +1,55 @@
-<h1>I'm here</h1>
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-9">
+      <h1 class="text-center">Add Bookcase</h1>
+
+      <% if @bookcase.errors.any? %>
+        <ul class="list-unstyled">
+          <% @bookcase.errors.each do |column, message| %>
+            <div class="row">
+              <li class="col-lg-6 col-lg-offset-3 text-center alert alert-danger">
+                <%= column.capitalize %> <%= message %>
+              </li>
+            </div>
+          <% end %>
+      <% end %>
+
+      <%= form_tag bookcases_path, class: "form-horizontal" do %>
+        <div class="form-group">
+          <div class="col-lg-3 col-lg-offset-3 text-center">
+            <%= label_tag :name %>
+          </div>
+          <%= text_field_tag :name, @bookcase.name, placeholder: "name"  %>
+        </div>
+        <div class="form-group">
+          <div class="col-lg-3 col-lg-offset-3 text-center">
+            <%= label_tag :description %>
+          </div>
+          <%= text_area_tag :description, @bookcase.description, placeholder: "description" %>
+        </div>
+        <div class="col-lg-2 col-lg-offset-5">
+          <%= submit_tag "Add", class: "btn btn-block btn-success"  %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="col-md-3">
+        <% if @bookcases %>
+          <% @bookcases.each do |bookcase| %>
+            <div class="list">
+              <ul class="list-unstyled">
+                <li><%= bookcase.name %></li>
+                <li><%= bookcase.description %></li>
+                <%= form_tag bookcase_path(bookcase.id), method: "DELETE" do %>
+                  <%= submit_tag "X", data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+        <% end %>
+    </div>
+  </div>
+
+</div>

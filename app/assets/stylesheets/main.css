@@ -1,0 +1,9 @@
+* { outline: pink solid 1px }
+
+.flash {
+  float: none !important;
+}
+
+.list {
+  margin-bottom: 20px;
+}
