@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  author: MyString
+  bookcase_id: 1
+  row: 1
+  position: 1
+  status: false
+  section: 1
+  orientation: MyString
+
+two:
+  name: MyString
+  author: MyString
+  bookcase_id: 1
+  row: 1
+  position: 1
+  status: false
+  section: 1
+  orientation: MyString
