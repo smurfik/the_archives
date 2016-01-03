@@ -9,11 +9,25 @@
     </div>
   <% end %>
 
-  <table class="table table-bordered">
-    <tr>
-      <th colspan="8" class="text-center"><h3>Current Books</h3></th>
-    </tr>
-    <tr>
+  <table class="table table-bordered" id="books">
+    <thead>
+      <tr>
+        <th colspan="8" class="text-center"><h3>Current Books</h3></th>
+      </tr>
+      <tr>
+        <th class="text-center sort" id="name">Name (sort)</th>
+        <th class="text-center">Author</th>
+        <th class="text-center sort" id="bookcase">Bookcase (sort)</th>
+        <th class="text-center">Row</th>
+        <th class="text-center">Position</th>
+        <th class="text-center">Section</th>
+        <th class="text-center">Orientation</th>
+        <th class="text-center">In/out</th>
+      </tr>
+    </thead>
+
+    <tfoot>
+     <tr>
       <th class="text-center">Name</th>
       <th class="text-center">Author</th>
       <th class="text-center">Bookcase</th>
@@ -22,31 +36,34 @@
       <th class="text-center">Section</th>
       <th class="text-center">Orientation</th>
       <th class="text-center">In/out</th>
-    </tr>
+     </tr>
+    </tfoot>
 
-    <% @books.each do |book| %>
-      <tr>
-        <td><%= book.name %></td>
-        <td><%= book.author %></td>
-        <td><%= book.bookcase.name %></td>
-        <td><%= book.row %></td>
-        <td><%= book.position %></td>
-        <td><%= book.section %></td>
-        <td><%= book.orientation %></td>
-        <% if book.status %>
-          <td>
-            <%= form_tag book_path(book.id), method: "PATCH" do %>
-              <%= submit_tag "Take out", class: "btn btn-success" %>
-            <% end %>
-          </td>
-        <% else %>
-          <td>
-            <%= form_tag book_path(book.id), method: "PATCH" do %>
-              <%= submit_tag "Put back", class: "btn btn-info" %>
-            <% end %>
-          </td>
-        <% end %>
-      </tr>
-    <% end %>
+    <tbody>
+      <% @books.each do |book| %>
+        <tr>
+          <td><%= book.name %></td>
+          <td><%= book.author %></td>
+          <td><%= book.bookcase.name %></td>
+          <td><%= book.row %></td>
+          <td><%= book.position %></td>
+          <td><%= book.section %></td>
+          <td><%= book.orientation %></td>
+          <% if book.status %>
+            <td>
+              <%= form_tag book_path(book.id), method: "PATCH" do %>
+                <%= submit_tag "Take out", class: "btn btn-success" %>
+              <% end %>
+            </td>
+          <% else %>
+            <td>
+              <%= form_tag book_path(book.id), method: "PATCH" do %>
+                <%= submit_tag "Put back", class: "btn btn-info" %>
+              <% end %>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
   </table>
 </div>
