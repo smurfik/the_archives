@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'books/new', to: 'books#new', as: :new_book
   post 'books', to: 'books#create', as: :books
   delete 'books/:id', to: 'books#destroy', as: :book
+  patch 'books/:id', to: 'books#update'
   # resources :bookcases
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

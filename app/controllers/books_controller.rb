@@ -17,6 +17,17 @@ class BooksController < ApplicationController
     end
   end
 
+  def update
+    @book = Book.find(params[:id])
+    if @book.status
+      @book.status = false
+    else
+      @book.status = true
+    end
+    @book.save
+    redirect_to root_path
+  end
+
   def destroy
     @book = Book.find(params[:id])
     @book.destroy

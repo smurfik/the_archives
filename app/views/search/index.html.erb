@@ -35,9 +35,19 @@
         <td><%= book.section %></td>
         <td><%= book.orientation %></td>
         <% if book.status %>
-          <td>In</td>
+          <td class="row">
+            <div class="col-md-6">In</div>
+            <%= form_tag book_path(book.id), method: "PATCH", class: 'col-md-6'  do %>
+              <%= submit_tag "Read", class: "btn btn-success" %>
+            <% end %>
+          </td>
         <% else %>
-          <td>Out</td>
+          <td class="row">
+            <div class="col-md-6">Out</div>
+            <%= form_tag book_path(book.id), method: "PATCH", class: 'col-md-6'  do %>
+              <%= submit_tag "Put back", class: "btn btn-info" %>
+            <% end %>
+          </td>
         <% end %>
       </tr>
     <% end %>
