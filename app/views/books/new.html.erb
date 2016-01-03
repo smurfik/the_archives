@@ -73,7 +73,7 @@
                 <% bookcase.books.each do |book| %>
                   <div class="list row">
                     <ul class="list-unstyled col-md-10">
-                      <li><%= book.name.capitalize %> by <%= book.author.capitalize %></li>
+                      <li><em><%= book.name.capitalize %></em> by <%= book.author.capitalize %></li>
                     </ul>
                     <%= form_tag book_path(book.id), method: "DELETE", class: 'col-md-2' do %>
                       <%= submit_tag "X", data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
