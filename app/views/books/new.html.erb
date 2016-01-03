@@ -1,0 +1,90 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-9">
+      <h1 class="text-center">Add Book</h1>
+
+      <% if @book.errors.any? %>
+        <ul class="list-unstyled">
+          <% @book.errors.each do |column, message| %>
+            <div class="row">
+              <li class="col-lg-6 col-lg-offset-3 text-center alert alert-danger">
+                <%= column.capitalize %> <%= message %>
+              </li>
+            </div>
+          <% end %>
+      <% end %>
+
+      <%= form_tag books_path, class: "form-horizontal" do %>
+        <div class="form-group">
+          <div class="col-lg-3 col-lg-offset-3 text-center">
+            <%= label_tag :name %>
+          </div>
+          <%= text_field_tag :name, @book.name, placeholder: "name"  %>
+        </div>
+        <div class="form-group">
+          <div class="col-lg-3 col-lg-offset-3 text-center">
+            <%= label_tag :author %>
+          </div>
+          <%= text_field_tag :author, @book.author, placeholder: "author" %>
+        </div>
+        <div class="form-group">
+          <div class="col-lg-3 col-lg-offset-3 text-center">
+            <%= label_tag :bookcase_id %>
+          </div>
+          <%= select_tag "bookcase_id", options_from_collection_for_select(@bookcases, :id, :name) %>
+        </div>
+        <div class="form-group">
+          <div class="col-lg-3 col-lg-offset-3 text-center">
+            <%= label_tag :row %>
+          </div>
+          <%= select_tag "row", options_for_select(1..4) %>
+        </div>
+        <div class="form-group">
+          <div class="col-lg-3 col-lg-offset-3 text-center">
+            <%= label_tag :position %>
+          </div>
+          <%= select_tag "position", options_for_select(1..10) %>
+        </div>
+        <div class="form-group">
+          <div class="col-lg-3 col-lg-offset-3 text-center">
+            <%= label_tag :section %>
+          </div>
+          <%= select_tag "section", options_for_select(1..5) %>
+        </div>
+        <div class="form-group">
+          <div class="col-lg-3 col-lg-offset-3 text-center">
+            <%= label_tag :orientation %>
+          </div>
+          <%= select_tag "orientation", options_for_select(["horizontal", "vertical"]) %>
+        </div>
+        <div class="col-lg-2 col-lg-offset-5">
+          <%= submit_tag "Add", class: "btn btn-block btn-success"  %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="col-md-3">
+        <% if @books %>
+          <% @bookcases.each do |bookcase| %>
+            <div class="list">
+              <ul class="list-unstyled">
+                <li><%= bookcase.name %></li>
+                <% bookcase.books.each do |book| %>
+                  <div class="list">
+                    <ul class="list-unstyled">
+                      <li><%= book.name.capitalize %> by <%= book.author.capitalize %></li>
+                    </ul>
+                  </div>
+                  <%= form_tag book_path(book.id), method: "DELETE" do %>
+                    <%= submit_tag "Delete Book", data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
+                  <% end %>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+        <% end %>
+    </div>
+  </div>
+
+</div>
