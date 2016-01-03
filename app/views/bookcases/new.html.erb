@@ -39,7 +39,7 @@
           <% @bookcases.each do |bookcase| %>
             <div class="list row">
               <ul class="list-unstyled col-md-10">
-                <li><%= bookcase.name %></li>
+                <li><h4><%= bookcase.name %></h4></li>
                 <li><%= bookcase.description %></li>
               </ul>
               <%= form_tag bookcase_path(bookcase.id), method: "DELETE", class: 'col-md-2' do %>
