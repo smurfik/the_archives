@@ -1,4 +1,15 @@
 <div class="container">
+
+  <%= form_tag root_path, class: "form-inline" do %>
+    <div class="text-center">
+      <div class="form-group">
+        <%= text_field_tag :search, nil, placeholder: "Don't Make Me Think", class: "form-control" %>
+      </div>
+      <%= submit_tag "Search", class: "btn btn-default" %>
+    </div>
+    <br>
+  <% end %>
+
   <table class="table table-bordered">
     <tr>
       <th colspan="8" class="text-center"><h3>Current Books</h3></th>
