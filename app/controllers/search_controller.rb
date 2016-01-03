@@ -1,7 +1,15 @@
 class SearchController < ApplicationController
 
   def index
-    @books = Book.all
+    if params[:query].present?
+      @books = Book.where("name ILIKE ?", "%#{params[:query]}%")
+      if @books.empty?
+        flash[:notice] = "Please check the spelling and try again"
+      end
+    else
+      @books = Book.all
+    end
+
   end
 
 end
