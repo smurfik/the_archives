@@ -1,0 +1,34 @@
+<div class="container">
+  <table class="table table-bordered">
+    <tr>
+      <th colspan="8" class="text-center"><h3>Current Books</h3></th>
+    </tr>
+    <tr>
+      <th class="text-center">Name</th>
+      <th class="text-center">Author</th>
+      <th class="text-center">Bookcase</th>
+      <th class="text-center">Row</th>
+      <th class="text-center">Position</th>
+      <th class="text-center">Section</th>
+      <th class="text-center">Orientation</th>
+      <th class="text-center">In/out</th>
+    </tr>
+
+    <% @books.each do |book| %>
+      <tr>
+        <td><%= book.name %></td>
+        <td><%= book.author %></td>
+        <td><%= book.bookcase.name %></td>
+        <td><%= book.row %></td>
+        <td><%= book.position %></td>
+        <td><%= book.section %></td>
+        <td><%= book.orientation %></td>
+        <% if book.status %>
+          <td>In</td>
+        <% else %>
+          <td>Out</td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+</div>

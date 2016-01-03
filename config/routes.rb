@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get '/', to: 'search#index', as: :root
+
   get 'bookcases/new', to: 'bookcases#new', as: :new_bookcase
   post 'bookcases', to: 'bookcases#create', as: :bookcases
   delete 'bookcases/:id', to: 'bookcases#destroy', as: :bookcase
