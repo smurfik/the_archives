@@ -7,7 +7,7 @@ class SearchController < ApplicationController
         flash[:notice] = "Please check the spelling and try again"
       end
     else
-      @books = Book.all
+      @books = Book.all.order(:name)
     end
 
   end
