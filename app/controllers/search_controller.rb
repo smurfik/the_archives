@@ -4,7 +4,7 @@ class SearchController < ApplicationController
     if params[:query].present?
       @books = Book.where("name ILIKE ?", "%#{params[:query]}%")
       if @books.empty?
-        flash[:notice] = "Please check the spelling and try again"
+        flash[:notice] = "Book was not found. Try again"
       end
     else
       @books = Book.all.order(:name)
