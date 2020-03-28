@@ -1,5 +1,3 @@
 ## The Archives
 
-by Tammy Pop
-
-<https://the-archives.herokuapp.com/>
+search, add, delete books; create bookcases; take out/put back books
